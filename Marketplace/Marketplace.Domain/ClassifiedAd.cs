@@ -41,7 +41,6 @@ namespace Marketplace.Domain
                 Id = Id,
                 Title = title
             });
-
         }
 
 
