@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Text;
+using Marketplace.Framework;
 
 namespace Marketplace.Domain
 {

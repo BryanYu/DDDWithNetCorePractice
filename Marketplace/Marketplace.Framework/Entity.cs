@@ -5,25 +5,30 @@ using System.Text;
 
 namespace Marketplace.Framework
 {
-    public abstract class Entity
+    public abstract class Entity<TId> : IInternalEventHandler where TId : Value<TId>
     {
-        private readonly List<object> _events;
 
-        protected Entity() => _events = new List<object>();
+        private readonly Action<object> _applier;
+
+        public TId Id { get; protected set; }
+
+        protected Entity(Action<object> applier)
+        {
+            _applier = applier;
+        }
+
 
         protected void Apply(object @event)
         {
             When(@event);
-            EnsureValidState();
-            _events.Add(@event);
+            _applier(@event);
         }
-
-        public IEnumerable<object> GetChanges() => _events.AsEnumerable();
-
-        public void ClearChanges() => _events.Clear();
-
+        
         protected abstract void When(object @event);
-
-        protected abstract void EnsureValidState();
+        
+        public void Handle(object @event)
+        {
+            When(@event);
+        }
     }
 }

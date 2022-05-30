@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace Marketplace.Domain
+namespace Marketplace.Framework
 {
     public abstract class Value<T> where T : Value<T>
     {

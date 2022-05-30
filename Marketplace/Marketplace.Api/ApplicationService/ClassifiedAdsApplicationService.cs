@@ -56,7 +56,7 @@ namespace Marketplace.Api.ApplicationService
         //        break;
         //    default:
         //        throw new InvalidOperationException($"Command type {command.GetType().FullName} is unknown");
-        //} 
+        //}
 
 
         public async Task HandleCreateAsync(ClassifiedAds.V1.Create cmd)
